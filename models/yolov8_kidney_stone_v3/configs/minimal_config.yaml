@@ -1,0 +1,54 @@
+# Ultra-Minimal YOLO Configuration for 4GB GPU
+# This configuration is designed to work with RTX 3050 4GB
+
+# Model and data
+model: 'models/pretrained/yolo11n.pt'  # Nano model (smallest)
+data: '/home/rishi/Desktop/nephroscan/data/data.yaml'
+
+# Ultra-minimal training parameters
+epochs: 25
+imgsz: 320        # Very small image size
+batch: 1          # Single image per batch
+patience: 10
+
+# Hardware optimization
+device: 'auto'
+workers: 0        # No multiprocessing
+amp: false        # Disable mixed precision
+cache: false      # No caching
+half: false       # No half precision
+pin_memory: false
+
+# Minimal detection settings
+max_det: 25
+conf: 0.25
+iou: 0.7
+
+# Conservative learning rates
+lr0: 0.01
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+
+# Minimal augmentation
+hsv_h: 0.0
+hsv_s: 0.0
+hsv_v: 0.1
+degrees: 2.0
+translate: 0.05
+scale: 0.1
+flipud: 0.0
+fliplr: 0.5
+mosaic: 0.0
+mixup: 0.0
+
+# Saving settings
+save: true
+save_period: -1
+plots: false      # Disable plots to save memory
+verbose: true
+
+# Project paths
+project: '/home/rishi/Desktop/nephroscan/output/training_cycles'
+name: 'minimal_training'
+exist_ok: true

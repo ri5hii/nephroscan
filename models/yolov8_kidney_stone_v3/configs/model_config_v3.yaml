@@ -1,0 +1,97 @@
+# YOLOv8 Training Configuration for Kidney Stone Detection
+# Hardware configuration - Optimized for low GPU memory
+device: 'auto'  # Will auto-detect GPU/CPU
+workers: 1      # Minimum workers to save memory (was 2)
+amp: true      # Disable automatic mixed precision to save memory
+
+# Memory optimization settings
+max_det: 50     # Further reduce max detections to save memory (was 100)
+cache: false    # Disable caching to save memory
+half: false     # Disable half precision to avoid issues
+pin_memory: false  # Disable pin memory to save RAM
+
+# Model and data configuration
+model: 'models/pretrained/yolo11n.pt'  # YOLO11 nano - using existing pretrained model, no download needed
+data: '/home/rishi/Desktop/nephroscan/data/data.yaml'
+
+# Training parameters - Optimized for GPU memory
+epochs: 25   # Increased for medical accuracy
+imgsz: 480   # Further reduced image size to save GPU memory (was 416)
+batch: 2    # Very small batch size for 4GB GPU (was 4)
+patience: 30 # Early stopping patience
+
+# Learning rate configuration
+lr0: 0.001      # Initial learning rate
+lrf: 0.01      # Final learning rate (lr0 * lrf)
+momentum: 0.937
+weight_decay: 0.0005
+
+# Warmup configuration
+warmup_epochs: 3
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# Loss function weights
+box: 7.5       # Box loss weight
+cls: 0.5       # Classification loss weight
+dfl: 1.5       # Distribution focal loss weight
+
+# Data augmentation (medical-optimized)
+hsv_h: 0.0     # No hue changes for medical images
+hsv_s: 0.0     # No saturation changes for grayscale
+hsv_v: 0.15    # Slight brightness variation
+degrees: 3.0   # Small rotation for medical accuracy
+translate: 0.1 # Small translation
+scale: 0.15    # Scale variation
+shear: 1.0     # Minimal shear
+perspective: 0.0  # No perspective distortion
+flipud: 0.5    # Vertical flip
+fliplr: 0.5    # Horizontal flip
+mosaic: 0.3    # Reduced mosaic for medical data
+mixup: 0.0     # No mixup for medical detection
+copy_paste: 0.0  # No copy-paste augmentation
+
+# Training settings
+optimizer: 'AdamW'  # Automatic optimizer selection
+single_cls: true   # Single class detection
+amp: false         # Disable automatic mixed precision to save memory
+deterministic: true
+seed: 42
+close_mosaic: 10  # Disable mosaic in final epochs
+
+# Validation and saving
+val: true
+save: true
+save_period: -1  # Save only best and last
+plots: true
+verbose: true
+
+# Hardware configuration - Optimized for low GPU memory
+device: 'auto'  # Will auto-detect GPU/CPU
+workers: 4      # Reduced workers to save memory (was 8)
+amp: false      # Disable automatic mixed precision to save memory
+
+# Memory optimization settings
+max_det: 100    # Reduce max detections to save memory (default 300)
+cache: false    # Disable caching to save memory
+
+# Project configuration
+project: '/home/rishi/Desktop/nephroscan/output/training_cycles'
+name: 'training'  # Will be timestamped by our backend
+exist_ok: true    # Allow existing directories
+
+# Advanced settings for medical imaging
+rect: false           # Rectangular training
+cos_lr: false         # Cosine learning rate scheduler
+resume: false         # Resume training
+profile: false        # Profile training speed
+freeze: null          # Freeze layers (null = no freezing)
+multi_scale: false    # Multi-scale training
+fraction: 1.0         # Dataset fraction to use
+
+# Medical-specific validation settings
+conf: 0.25           # Confidence threshold for NMS
+iou: 0.7             # IoU threshold for NMS
+max_det: 300         # Maximum detections per image
+agnostic_nms: false  # Class-agnostic NMS
+retina_masks: false  # High-resolution masks

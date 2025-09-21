@@ -1,0 +1,51 @@
+# YOLOv8 dataset configuration for kidney stone detection - Version 3
+# Enhanced dataset with proper train/test/valid splits
+
+path: /home/rishi/Desktop/nephroscan/data  # dataset root dir
+train: train/images  # train images (relative to 'path')
+val: valid/images    # validation images (relative to 'path') 
+test: test/images    # test images (relative to 'path')
+
+# Classes
+names:
+  0: KidneyStone
+
+# Number of classes
+nc: 1
+
+# Additional metadata
+description: "Enhanced Kidney Stone Detection Dataset with 1300+ images"
+version: "3.0"
+authors: ["NephroScan Team"]
+date_created: "2025-09-20"
+source: "Roboflow - Tez ROI Aug Dataset"
+
+# Dataset statistics
+stats:
+  total_images: 1300
+  train_images: 1054
+  val_images: 123
+  test_images: 123
+  
+# Training parameters optimized for larger dataset
+training_config:
+  epochs: 100
+  batch_size: 16  # Can increase with larger dataset
+  img_size: 640   # Standard YOLO size for better performance
+  patience: 15    # More patience for larger dataset
+  
+# Data augmentation settings for medical imaging
+augmentation:
+  mosaic: 0.5
+  mixup: 0.0      # Disabled for medical data
+  copy_paste: 0.0 # Disabled for medical data
+  degrees: 10.0   # Slightly more rotation allowed
+  translate: 0.1
+  scale: 0.3      # More scale variation
+  shear: 3.0
+  perspective: 0.0 # Disabled for medical scans
+  flipud: 0.0     # No vertical flip for medical images
+  fliplr: 0.5     # Horizontal flip OK
+  hsv_h: 0.02     # Minimal hue variation
+  hsv_s: 0.4      # Minimal saturation
+  hsv_v: 0.3      # Minimal value variation

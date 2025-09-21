@@ -1,0 +1,60 @@
+dataset_size:
+  test: 123
+  total_images: 1300
+  train: 1054
+  valid: 123
+final_weights:
+  best: /home/rishi/Desktop/nephroscan/models/yolov8_kidney_stone_v3/results/yolov8s_v3_20250920_170700/weights/best.pt
+  last: /home/rishi/Desktop/nephroscan/models/yolov8_kidney_stone_v3/results/yolov8s_v3_20250920_170700/weights/last.pt
+model_size: s
+results_directory: /home/rishi/Desktop/nephroscan/models/yolov8_kidney_stone_v3/results/yolov8s_v3_20250920_170700
+run_name: yolov8s_v3_20250920_170700
+training_args:
+  auto_augment: randaugment
+  batch: 8
+  box: 7.5
+  cache: true
+  cls: 0.5
+  copy_paste: 0.0
+  data: /home/rishi/Desktop/nephroscan/models/yolov8_kidney_stone_v3/configs/data_v3.yaml
+  degrees: 10.0
+  device: 0
+  dfl: 1.5
+  dropout: 0.0
+  epochs: 30
+  erasing: 0.4
+  exist_ok: true
+  fliplr: 0.5
+  flipud: 0.0
+  hsv_h: 0.02
+  hsv_s: 0.4
+  hsv_v: 0.3
+  imgsz: 640
+  kobj: 1.0
+  label_smoothing: 0.0
+  lr0: 0.01
+  lrf: 0.01
+  mask_ratio: 4
+  mixup: 0.0
+  momentum: 0.937
+  mosaic: 0.5
+  name: yolov8s_v3_20250920_170700
+  nbs: 64
+  overlap_mask: true
+  patience: 15
+  perspective: 0.0
+  pose: 12.0
+  project: /home/rishi/Desktop/nephroscan/models/yolov8_kidney_stone_v3/results
+  save: true
+  save_period: 10
+  scale: 0.3
+  seed: 42
+  shear: 3.0
+  translate: 0.1
+  verbose: true
+  warmup_bias_lr: 0.1
+  warmup_epochs: 3
+  warmup_momentum: 0.8
+  weight_decay: 0.0005
+  workers: 4
+training_completed: '2025-09-20T17:26:12.455163'
