@@ -169,22 +169,17 @@ models/*/checkpoints/
 runs/
 wandb/
 
-# Dataset and training outputs
+# Dataset and training outputs (keep training data)
 data/raw/
 data/processed/
 data/external/
-dataset/
-datasets/
 output/
 outputs/
 results/
 logs/
 tensorboard_logs/
 
-# Image and video files (if not part of core dataset)
-*.jpg
-*.jpeg
-*.png
+# Image and video files (exclude only non-essential formats)
 *.gif
 *.bmp
 *.tiff
@@ -194,6 +189,17 @@ tensorboard_logs/
 *.avi
 *.mov
 *.mkv
+
+# Allow training dataset images
+!data/train/**/*.jpg
+!data/train/**/*.jpeg
+!data/train/**/*.png
+!data/valid/**/*.jpg
+!data/valid/**/*.jpeg
+!data/valid/**/*.png
+!dataset/**/*.jpg
+!dataset/**/*.jpeg
+!dataset/**/*.png
 
 # Temporary and backup files
 *.tmp
