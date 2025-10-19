@@ -105,7 +105,7 @@ class V3ModelBackend:
         
         # Update both progress bar and logs
         self.update_progress(message, current_epoch, total_epochs)
-        self.log(f"✓ {message}")
+        self.log(f" {message}")
         
         # Force GUI update by processing events if callback exists
         if hasattr(self, 'progress_callback') and self.progress_callback:
@@ -264,7 +264,7 @@ class V3ModelBackend:
                 # Add training start callback
                 def on_train_start(trainer):
                     """Callback when training starts"""
-                    self.log("📚 Training started - model is learning...")
+                    self.log(" Training started - model is learning...")
                     self.update_progress("Training in progress...", 5, epochs + 5)
                     
                 model.add_callback('on_train_start', on_train_start)
@@ -277,7 +277,7 @@ class V3ModelBackend:
                     if batch_counter[0] % 10 == 0:  # Update every 10 batches
                         if hasattr(trainer, 'epoch'):
                             current_epoch = trainer.epoch + 1
-                            self.log(f"  📊 Epoch {current_epoch} - Batch {batch_counter[0]} processed")
+                            self.log(f"   Epoch {current_epoch} - Batch {batch_counter[0]} processed")
                 
                 model.add_callback('on_train_batch_end', on_train_batch_end)
                 
@@ -313,7 +313,7 @@ class V3ModelBackend:
                 
                 # Start training with progress update
                 self.update_progress("Starting training...", 3, epochs + 5)
-                self.log("🚀 Starting YOLO training...")
+                self.log(" Starting YOLO training...")
                 
                 results = model.train(**train_config)
                 
@@ -724,7 +724,7 @@ class V3ModelBackend:
             new_best_pt = training_dir / "weights" / "best.pt"
             
             if not new_best_pt.exists():
-                self.log("⚠️  No best.pt found in training results")
+                self.log("  No best.pt found in training results")
                 return
             
             # Get current best checkpoint metrics
@@ -732,20 +732,20 @@ class V3ModelBackend:
             new_metrics = self._get_training_metrics_from_results(results)
             
             if not new_metrics:
-                self.log("⚠️  Could not extract metrics from new training")
+                self.log("  Could not extract metrics from new training")
                 return
             
             # Compare models using composite score (prioritizing precision for medical use)
             current_score = self._calculate_model_score(current_best_metrics) if current_best_metrics else 0
             new_score = self._calculate_model_score(new_metrics)
             
-            self.log(f"📊 Model comparison:")
+            self.log(f" Model comparison:")
             self.log(f"   Current best score: {current_score:.3f}")
             self.log(f"   New model score: {new_score:.3f}")
             
             # Update if new model is better (with small threshold to avoid unnecessary updates)
             if new_score > current_score + 0.005:  # 0.5% improvement threshold for medical applications
-                self.log(f"🚀 New model is better! Updating main weights...")
+                self.log(f" New model is better! Updating main weights...")
                 
                 # Create timestamped backup of current model if it exists
                 weights_dir = self.config.get_model_output_dir()
@@ -758,7 +758,7 @@ class V3ModelBackend:
                     backup_name = f"backup_best_{timestamp}.pt"
                     backup_path = weights_dir / backup_name
                     shutil.copy2(current_best, backup_path)
-                    self.log(f"📦 Backed up current model to: {backup_name}")
+                    self.log(f" Backed up current model to: {backup_name}")
                 
                 # Copy new best model to main weights directory
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -766,7 +766,7 @@ class V3ModelBackend:
                 new_best_path = weights_dir / new_best_name
                 
                 shutil.copy2(str(new_best_pt), str(new_best_path))
-                self.log(f"✅ Updated main model: {new_best_name}")
+                self.log(f" Updated main model: {new_best_name}")
                 
                 # Also copy the last checkpoint
                 new_last_pt = training_dir / "weights" / "last.pt"
@@ -774,10 +774,10 @@ class V3ModelBackend:
                     new_last_name = f"last_v3_{timestamp}.pt"
                     new_last_path = weights_dir / new_last_name
                     shutil.copy2(str(new_last_pt), str(new_last_path))
-                    self.log(f"✅ Updated last checkpoint: {new_last_name}")
+                    self.log(f" Updated last checkpoint: {new_last_name}")
                 
                 # Log improvement details
-                self.log(f"🎯 Model improvements:")
+                self.log(f" Model improvements:")
                 if current_best_metrics:  # Check if current_best_metrics is not None
                     if new_metrics.get('precision', 0) > current_best_metrics.get('precision', 0):
                         self.log(f"   • Precision: {current_best_metrics.get('precision', 0):.3f} → {new_metrics.get('precision', 0):.3f}")
@@ -796,11 +796,11 @@ class V3ModelBackend:
                 self._cleanup_old_checkpoints()
                 
             else:
-                self.log(f"📊 Current model is still better (or improvement too small)")
+                self.log(f" Current model is still better (or improvement too small)")
                 self.log(f"   Keeping existing model in main weights directory")
                 
         except Exception as e:
-            self.log(f"❌ Error updating best checkpoint: {str(e)}")
+            self.log(f" Error updating best checkpoint: {str(e)}")
             import traceback
             self.log(f"Traceback: {traceback.format_exc()}")
     
@@ -814,7 +814,7 @@ class V3ModelBackend:
             if not weights_dir.exists():
                 return
             
-            self.log("🧹 Cleaning up old checkpoints...")
+            self.log(" Cleaning up old checkpoints...")
             
             # Get all checkpoint files
             all_checkpoints = list(weights_dir.glob("*.pt"))
@@ -863,14 +863,14 @@ class V3ModelBackend:
             for checkpoint in checkpoints_to_remove:
                 try:
                     checkpoint.unlink()
-                    self.log(f"🗑️ Removed old checkpoint: {checkpoint.name}")
+                    self.log(f" Removed old checkpoint: {checkpoint.name}")
                     removed_count += 1
                 except Exception as e:
-                    self.log(f"⚠️ Could not remove {checkpoint.name}: {str(e)}")
+                    self.log(f" Could not remove {checkpoint.name}: {str(e)}")
             
             # Log summary
             remaining_count = len(all_checkpoints) - removed_count
-            self.log(f"✅ Checkpoint cleanup complete:")
+            self.log(f" Checkpoint cleanup complete:")
             self.log(f"   • Removed: {removed_count} old checkpoints")
             self.log(f"   • Remaining: {remaining_count} checkpoints")
             self.log(f"   • Best checkpoints: {min(len(best_checkpoints), 3)}")
@@ -878,7 +878,7 @@ class V3ModelBackend:
             self.log(f"   • Other checkpoints: {min(len(other_checkpoints), 2)}")
             
         except Exception as e:
-            self.log(f"❌ Error during checkpoint cleanup: {str(e)}")
+            self.log(f" Error during checkpoint cleanup: {str(e)}")
             import traceback
             self.log(f"Traceback: {traceback.format_exc()}")
 
@@ -1549,7 +1549,7 @@ class V3ModelBackend:
         Public method to manually trigger checkpoint cleanup.
         Useful for maintenance or when called from GUI.
         """
-        self.log("🧹 Manual checkpoint cleanup requested...")
+        self.log(" Manual checkpoint cleanup requested...")
         self._cleanup_old_checkpoints()
     
     def get_checkpoint_info(self):

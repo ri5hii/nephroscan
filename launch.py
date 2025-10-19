@@ -36,21 +36,21 @@ try:
     config = Config()
     app_info = config.get_app_info()
     
-    print("🚀 NephroScan v3 - Kidney Stone Detection System")
+    print(" NephroScan v3 - Kidney Stone Detection System")
     print("=" * 55)
-    print(f"📁 Project root: {project_root}")
-    print(f"📂 Data directory: {config.data_dir}")
-    print(f"📊 App version: {app_info.get('version', '3.0.0')}")
-    print(f"⚙️  Configuration: Loaded from model_config_v3.yaml")
-    print(f"🏥 Training: Medical-optimized parameters ({config.training_config['epochs']} epochs)")
-    print(f"🔍 Checking dependencies...")
+    print(f" Project root: {project_root}")
+    print(f" Data directory: {config.data_dir}")
+    print(f" App version: {app_info.get('version', '3.0.0')}")
+    print(f"  Configuration: Loaded from model_config_v3.yaml")
+    print(f" Training: Medical-optimized parameters ({config.training_config['epochs']} epochs)")
+    print(f" Checking dependencies...")
     
     # Verify critical dependencies
     dependencies = {
-        "PyQt5": "✅ PyQt5 available",
-        "ultralytics": "✅ Ultralytics available", 
-        "matplotlib": "✅ Matplotlib available",
-        "torch": "✅ PyTorch available"
+        "PyQt5": " PyQt5 available",
+        "ultralytics": " Ultralytics available", 
+        "matplotlib": " Matplotlib available",
+        "torch": " PyTorch available"
     }
     
     for dep, msg in dependencies.items():
@@ -58,10 +58,10 @@ try:
             __import__(dep)
             print(msg)
         except ImportError:
-            print(f"❌ {dep} not found. Install with: pip install {dep}")
+            print(f" {dep} not found. Install with: pip install {dep}")
             sys.exit(1)
     
-    print("🎯 Launching GUI...")
+    print(" Launching GUI...")
     
     def main():
         """Main application entry point"""
@@ -81,15 +81,15 @@ try:
             window = KidneyStoneDetectionGUI()
             window.show()
             
-            print("✨ GUI launched successfully!")
-            print("💡 Use the Upload tab to select your data")
-            print("📊 Use the Analysis tab for training/testing insights")
-            print("🖼️  Use the Results tab for inference results")
+            print(" GUI launched successfully!")
+            print(" Use the Upload tab to select your data")
+            print(" Use the Analysis tab for training/testing insights")
+            print("  Use the Results tab for inference results")
             
             return app.exec_()
             
         except Exception as e:
-            print(f"❌ Failed to launch GUI: {e}")
+            print(f" Failed to launch GUI: {e}")
             QMessageBox.critical(None, "Launch Error", 
                                f"Failed to launch NephroScan GUI:\\n{str(e)}")
             return 1
@@ -98,10 +98,10 @@ try:
         sys.exit(main())
         
 except ImportError as e:
-    print(f"❌ Import error: {e}")
-    print("🔧 Please install required dependencies with:")
+    print(f" Import error: {e}")
+    print(" Please install required dependencies with:")
     print("   python scripts/install.py")
     sys.exit(1)
 except Exception as e:
-    print(f"❌ Unexpected error: {e}")
+    print(f" Unexpected error: {e}")
     sys.exit(1)

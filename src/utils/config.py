@@ -43,10 +43,10 @@ class Config:
             with open(config_path, 'r', encoding='utf-8') as file:
                 return yaml.safe_load(file)
         except FileNotFoundError:
-            print(f"⚠️  Config file not found at {config_path}. Using default values.")
+            print(f"  Config file not found at {config_path}. Using default values.")
             return self._get_default_config()
         except yaml.YAMLError as e:
-            print(f"❌ Error parsing YAML config: {e}. Using default values.")
+            print(f" Error parsing YAML config: {e}. Using default values.")
             return self._get_default_config()
     
     def _get_default_config(self) -> Dict[str, Any]:
@@ -235,7 +235,7 @@ class Config:
         
         # If output is trying to go to models directory, redirect to training_cycles
         if str(output_path).find("models") != -1:
-            self.log(f"⚠️  Redirecting training output from models directory to organized location")
+            self.log(f"  Redirecting training output from models directory to organized location")
             return str(self.output_dir / "training_cycles")
         
         # Ensure it goes to our organized training_cycles directory
@@ -358,9 +358,9 @@ class Config:
         try:
             with open(output_path, 'w', encoding='utf-8') as file:
                 yaml.dump(self.config_data, file, default_flow_style=False, sort_keys=False)
-            print(f"✅ Configuration saved to {output_path}")
+            print(f" Configuration saved to {output_path}")
         except Exception as e:
-            print(f"❌ Failed to save configuration: {e}")
+            print(f" Failed to save configuration: {e}")
     
     # Legacy methods for backward compatibility
     def get_training_output_dir(self) -> Path:

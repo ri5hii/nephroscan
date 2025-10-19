@@ -77,7 +77,7 @@ def validate_dataset(dataset_path):
         if not path.exists():
             logger.error(f"Required path not found: {path}")
             return False
-        logger.info(f"✓ Found: {path}")
+        logger.info(f" Found: {path}")
     
     # Count images and labels in each split
     splits = ['train', 'valid', 'test']

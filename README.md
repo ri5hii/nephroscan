@@ -7,35 +7,35 @@
 
 A comprehensive medical imaging system for kidney stone detection and analysis using advanced deep learning models with adaptive preprocessing and memory optimization for various GPU configurations.
 
-## ✨ Key Features
+##  Key Features
 
-### 🔬 **Adaptive Preprocessing System**
+###  **Adaptive Preprocessing System**
 - **CT Scan Detection**: Automatically detects and preserves detail in high-resolution CT scans (640×640+ resolution)
 - **Quality Assessment**: Intelligent image quality evaluation with appropriate enhancement
 - **Medical Image Processing**: Specialized preprocessing for different medical imaging modalities
 - **Coordinate Scaling**: Maintains accurate detection mapping across different image resolutions
 
-### 🧠 **AI Model Architecture**
+###  **AI Model Architecture**
 - **YOLO11 Nano**: Memory-efficient model optimized for medical imaging
 - **Single Class Detection**: Specialized for kidney stone identification
 - **Medical-Optimized Training**: Conservative learning rates and loss weights tuned for medical accuracy
 - **Adaptive Configuration**: Automatically adjusts to available GPU memory
 
-### 💾 **Memory Management & GPU Optimization**
+###  **Memory Management & GPU Optimization**
 - **Multi-GPU Support**: Optimized for RTX 3050 4GB and higher-end GPUs
 - **Automatic Checkpoint Cleanup**: Maintains only essential checkpoints (3 best + 3 last + 2 other)
 - **Batch Size Adaptation**: Dynamic batch sizing based on available GPU memory
 - **Memory Fragmentation Prevention**: Environment variable optimization for CUDA
 - **Real-time Monitoring**: GPU memory usage tracking during training
 
-### �️ **User Interface & Workflow**
+###  **User Interface & Workflow**
 - **PyQt5 GUI**: Intuitive graphical interface for medical professionals
 - **Three-Tab Workflow**: Training, Testing, and Inference in organized tabs
 - **Real-time Processing**: Live image preprocessing and detection visualization
 - **Progress Monitoring**: Detailed training progress with memory usage tracking
 - **Report Generation**: Professional PDF report generation for medical documentation
 
-## 🚀 Installation & Setup
+##  Installation & Setup
 
 ### Prerequisites
 - Python 3.8+ 
@@ -63,7 +63,7 @@ chmod +x optimize_gpu.sh
 python src/main.py
 ```
 
-## 💻 Hardware Configuration
+##  Hardware Configuration
 
 ### GPU Memory Optimization
 
@@ -100,37 +100,37 @@ This automatically sets:
 - `CUDA_LAUNCH_BLOCKING=1`
 - `CUDA_VISIBLE_DEVICES=0`
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 nephroscan/
-├── src/                          # Source code
-│   ├── gui/                      # PyQt5 interface
-│   │   ├── main_window.py        # Main application window
-│   │   └── widgets/              # UI components
-│   ├── backend/                  # Core functionality
-│   │   └── v3_model.py           # YOLO11 model backend with adaptive preprocessing
-│   └── utils/                    # Utilities
-│       ├── config.py             # Configuration management
-│       └── image_preprocessor.py # Adaptive preprocessing system
-├── models/                       # Model configurations
-│   └── yolov8_kidney_stone_v3/
-│       ├── configs/
-│       │   └── model_config_v3.yaml  # GPU-optimized training configuration
-│       └── weights/              # Trained model checkpoints
-├── data/                         # Dataset structure (YOLO format)
-│   ├── train/
-│   │   ├── images/
-│   │   └── labels/
-│   ├── valid/
-│   └── test/
-├── docs/                         # Documentation
-├── scripts/                      # Utility scripts
-├── optimize_gpu.sh               # GPU memory optimization script
-└── clear_gpu.py                  # GPU memory cleanup utility
+ src/                          # Source code
+    gui/                      # PyQt5 interface
+       main_window.py        # Main application window
+       widgets/              # UI components
+    backend/                  # Core functionality
+       v3_model.py           # YOLO11 model backend with adaptive preprocessing
+    utils/                    # Utilities
+        config.py             # Configuration management
+        image_preprocessor.py # Adaptive preprocessing system
+ models/                       # Model configurations
+    yolov8_kidney_stone_v3/
+        configs/
+           model_config_v3.yaml  # GPU-optimized training configuration
+        weights/              # Trained model checkpoints
+ data/                         # Dataset structure (YOLO format)
+    train/
+       images/
+       labels/
+    valid/
+    test/
+ docs/                         # Documentation
+ scripts/                      # Utility scripts
+ optimize_gpu.sh               # GPU memory optimization script
+ clear_gpu.py                  # GPU memory cleanup utility
 ```
 
-## � Adaptive Preprocessing System
+##  Adaptive Preprocessing System
 
 The system automatically detects image types and applies appropriate preprocessing:
 
@@ -152,7 +152,7 @@ The system automatically detects image types and applies appropriate preprocessi
 - **Enhancement**: Medical-optimized contrast and brightness adjustment
 - **Use case**: Standard medical imaging modalities
 
-## 🏃‍♂️ Usage Guide
+##  Usage Guide
 
 ### Training Workflow
 1. **Prepare Dataset**: Organize images and labels in YOLO format in `data/` directory
@@ -170,7 +170,7 @@ The system automatically detects image types and applies appropriate preprocessi
 5. **Results**: Bounding boxes, confidence metrics, and medical analysis
 6. **Report Generation**: Professional PDF reports for documentation
 
-## 🔧 Configuration & Troubleshooting
+##  Configuration & Troubleshooting
 
 ### CUDA Out of Memory Solutions
 ```bash
@@ -221,7 +221,7 @@ workers: 4
 amp: true
 ```
 
-## 📊 Model Performance & Metrics
+##  Model Performance & Metrics
 
 ### Current Performance (YOLO11 Nano)
 - **mAP50**: Optimized for medical accuracy
@@ -237,7 +237,7 @@ amp: true
 | RTX 4060 8GB | 4-6 | 480px | ~25 minutes |
 | RTX 4070 12GB | 8-12 | 640px | ~15 minutes |
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-adaptive-preprocessing`
@@ -245,18 +245,18 @@ amp: true
 4. Push to branch: `git push origin feature-adaptive-preprocessing`
 5. Submit a pull request
 
-## 📝 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Ultralytics YOLO11**: For the base model architecture and training framework
 - **Medical Imaging Community**: For preprocessing insights and validation standards
 - **PyQt5**: For the intuitive cross-platform graphical interface
 - **CUDA Community**: For GPU optimization techniques and memory management
 
-## 📞 Support & Issues
+##  Support & Issues
 
 For issues, questions, or contributions:
 - **GitHub Issues**: Create an issue for bugs or feature requests
@@ -264,14 +264,14 @@ For issues, questions, or contributions:
 - **Configuration Help**: Review GPU optimization guide
 - **Performance Issues**: Monitor GPU memory with `nvidia-smi`
 
-## 🔍 Recent Updates
+##  Recent Updates
 
 ### v3.2 - Memory Optimization & Adaptive Preprocessing
-- ✅ Added adaptive preprocessing for CT scans, low-quality images, and standard medical images
-- ✅ Implemented automatic GPU memory optimization for RTX 3050 4GB and similar GPUs
-- ✅ Added automatic checkpoint management system
-- ✅ Enhanced CUDA memory management with environment variable optimization
-- ✅ Improved coordinate scaling for accurate detection mapping
+-  Added adaptive preprocessing for CT scans, low-quality images, and standard medical images
+-  Implemented automatic GPU memory optimization for RTX 3050 4GB and similar GPUs
+-  Added automatic checkpoint management system
+-  Enhanced CUDA memory management with environment variable optimization
+-  Improved coordinate scaling for accurate detection mapping
 
 ---
 

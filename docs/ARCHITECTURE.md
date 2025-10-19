@@ -1,41 +1,41 @@
 # NephroScan v3 - Restructured Project Architecture
 
-## 🏗️ New Modular Structure
+##  New Modular Structure
 
 The NephroScan project has been completely restructured into a clean, modular architecture for better maintainability, scalability, and ease of reference.
 
-### 📁 Directory Structure
+###  Directory Structure
 
 ```
 nephroscan/
-├── 📁 src/nephroscan/              # Core application source code
-│   ├── 📁 backend/                 # Machine learning backend
-│   │   ├── __init__.py
-│   │   └── v3_model.py            # V3ModelBackend class (renamed from v3_backend.py)
-│   ├── 📁 gui/                    # PyQt5 user interface
-│   │   ├── __init__.py
-│   │   ├── main_window.py         # KidneyStoneDetectionGUI (renamed from main.py)
-│   │   └── 📁 widgets/            # Reusable GUI components
-│   │       ├── __init__.py
-│   │       └── report_generator.py # PDFReportGenerator (renamed from report.py)
-│   ├── 📁 utils/                  # Utilities and configuration
-│   │   ├── __init__.py
-│   │   ├── config.py             # Centralized configuration management
-│   │   └── yolo_utils.py         # YOLO training utilities
-│   └── __init__.py               # Package initialization
-├── 📁 scripts/                   # Installation and utility scripts
-│   └── install.py               # Enhanced installation script
-├── 📁 docs/                     # Documentation and guides
-├── 📁 tests/                    # Unit tests and validation
-├── 📁 data/                     # Dataset storage (unchanged)
-├── 📁 models/                   # Model weights and outputs (unchanged)
-├── 📁 .venv/                    # Virtual environment (unchanged)
-├── launch.py                    # Main application launcher (enhanced)
-├── requirements.txt             # Consolidated dependencies
-└── README.md                    # Updated project documentation
+  src/nephroscan/              # Core application source code
+     backend/                 # Machine learning backend
+       __init__.py
+       v3_model.py            # V3ModelBackend class (renamed from v3_backend.py)
+     gui/                    # PyQt5 user interface
+       __init__.py
+       main_window.py         # KidneyStoneDetectionGUI (renamed from main.py)
+        widgets/            # Reusable GUI components
+           __init__.py
+           report_generator.py # PDFReportGenerator (renamed from report.py)
+     utils/                  # Utilities and configuration
+       __init__.py
+       config.py             # Centralized configuration management
+       yolo_utils.py         # YOLO training utilities
+    __init__.py               # Package initialization
+  scripts/                   # Installation and utility scripts
+    install.py               # Enhanced installation script
+  docs/                     # Documentation and guides
+  tests/                    # Unit tests and validation
+  data/                     # Dataset storage (unchanged)
+  models/                   # Model weights and outputs (unchanged)
+  .venv/                    # Virtual environment (unchanged)
+ launch.py                    # Main application launcher (enhanced)
+ requirements.txt             # Consolidated dependencies
+ README.md                    # Updated project documentation
 ```
 
-## 🔄 Key Changes
+##  Key Changes
 
 ### 1. **Modular Package Structure**
 - **Before**: All files in single directory with unclear organization
@@ -58,7 +58,7 @@ nephroscan/
 - **New**: Comprehensive launcher with dependency checking
 - **New**: Enhanced installation script with better error handling
 
-## 📦 Module Responsibilities
+##  Module Responsibilities
 
 ### Backend Module (`src/nephroscan/backend/`)
 - `v3_model.py`: Core ML functionality
@@ -84,7 +84,7 @@ nephroscan/
   - YOLOTrainer class
   - Dataset preparation functions
 
-## 🚀 Usage with New Structure
+##  Usage with New Structure
 
 ### Launching the Application
 ```bash
@@ -110,17 +110,17 @@ dataset_path = config.dataset_path
 model_path = config.v3_model_path
 ```
 
-## ✅ Benefits of Restructuring
+##  Benefits of Restructuring
 
-1. **🧹 Clean Organization**: Clear separation of concerns
-2. **🔧 Easy Maintenance**: Logical module structure
-3. **📈 Scalability**: Easy to add new features
-4. **🎯 Testability**: Isolated components for unit testing
-5. **📚 Documentation**: Better code organization and documentation
-6. **🔄 Reusability**: Modular components can be reused
-7. **⚙️ Configuration**: Centralized settings management
+1. ** Clean Organization**: Clear separation of concerns
+2. ** Easy Maintenance**: Logical module structure
+3. ** Scalability**: Easy to add new features
+4. ** Testability**: Isolated components for unit testing
+5. ** Documentation**: Better code organization and documentation
+6. ** Reusability**: Modular components can be reused
+7. ** Configuration**: Centralized settings management
 
-## 🔗 Import Path Changes
+##  Import Path Changes
 
 ### Old Structure Imports
 ```python
@@ -139,15 +139,15 @@ from nephroscan.utils.yolo_utils import YOLOTrainer
 from nephroscan.utils.config import config
 ```
 
-## 🎯 Migration Summary
+##  Migration Summary
 
 The restructuring maintains all functionality while providing:
-- ✅ **Clean modular architecture**
-- ✅ **Centralized configuration management**
-- ✅ **Professional package structure**
-- ✅ **Enhanced launcher and installation**
-- ✅ **Improved documentation**
-- ✅ **Better maintainability**
+-  **Clean modular architecture**
+-  **Centralized configuration management**
+-  **Professional package structure**
+-  **Enhanced launcher and installation**
+-  **Improved documentation**
+-  **Better maintainability**
 
 All original features remain intact:
 - Real-time epoch progress monitoring

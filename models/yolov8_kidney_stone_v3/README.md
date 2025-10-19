@@ -26,19 +26,19 @@ This is the most comprehensive version of the YOLOv8 kidney stone detection mode
 ## Directory Structure
 ```
 yolov8_kidney_stone_v3/
-├── configs/           # Configuration files
-│   ├── data_v3.yaml              # Dataset configuration
-│   ├── model_config_v3.yaml      # Model configuration
-│   └── training_summary_*.yaml   # Training results
-├── scripts/           # Training and inference scripts
-│   ├── train_v3.py               # Enhanced training script
-│   └── inference_v3.py           # Inference script
-├── weights/           # Model weights
-│   ├── best_v3_*.pt              # Best performing weights
-│   └── last_v3_*.pt              # Latest weights
-├── results/           # Training results and logs
-│   └── run directories with metrics and plots
-└── README.md         # This file
+ configs/           # Configuration files
+    data_v3.yaml              # Dataset configuration
+    model_config_v3.yaml      # Model configuration
+    training_summary_*.yaml   # Training results
+ scripts/           # Training and inference scripts
+    train_v3.py               # Enhanced training script
+    inference_v3.py           # Inference script
+ weights/           # Model weights
+    best_v3_*.pt              # Best performing weights
+    last_v3_*.pt              # Latest weights
+ results/           # Training results and logs
+    run directories with metrics and plots
+ README.md         # This file
 ```
 
 ## Key Improvements in Version 3
