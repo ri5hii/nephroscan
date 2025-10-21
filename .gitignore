@@ -1,12 +1,9 @@
-# NephroScan - Python Medical Imaging Project
-# Comprehensive .gitignore for ML/AI projects
+# NephroScan - Medical Imaging Project
 
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
 
 # Distribution / packaging
@@ -23,87 +20,22 @@ parts/
 sdist/
 var/
 wheels/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
+# Testing
 htmlcov/
 .tox/
-.nox/
 .coverage
 .coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *.cover
-*.py,cover
 .hypothesis/
 .pytest_cache/
-cover/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# poetry
-poetry.lock
-
-# pdm
-.pdm.toml
-
-# PEP 582
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
 
 # Environments
 .env
@@ -114,157 +46,39 @@ ENV/
 env.bak/
 venv.bak/
 
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# IDE specific files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
-# OS specific files
+# OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Machine Learning / AI specific
-# Model weights and checkpoints
+# Machine Learning
 *.pt
 *.pth
 *.ckpt
 *.h5
-*.hdf5
-*.pb
 *.onnx
-*.tflite
-models/*/weights/
-models/*/checkpoints/
 runs/
 wandb/
 
-# Dataset and training outputs (keep training data)
-data/raw/
-data/processed/
-data/external/
+# Project specific
 output/
-outputs/
-results/
 logs/
-tensorboard_logs/
+temp_images/
+preprocessed_images/
+kidney_stone_report*.pdf
 
-# Image and video files (exclude only non-essential formats)
-*.gif
-*.bmp
-*.tiff
-*.tif
-*.webp
-*.mp4
-*.avi
-*.mov
-*.mkv
-
-# Allow training dataset images
+# Keep dataset images
 !data/train/**/*.jpg
 !data/train/**/*.jpeg
 !data/train/**/*.png
 !data/valid/**/*.jpg
 !data/valid/**/*.jpeg
 !data/valid/**/*.png
-!dataset/**/*.jpg
-!dataset/**/*.jpeg
-!dataset/**/*.png
-
-# Temporary and backup files
-*.tmp
-*.temp
-*.bak
-*.backup
-*~
-.#*
-\#*#
-
-# Large files and binaries
-*.zip
-*.tar
-*.tar.gz
-*.rar
-*.7z
-*.bin
-*.exe
-*.dll
-
-# GPU memory dumps and debug files
-*.cuda
-*.nvprof
-*.nsight
-
-# Medical imaging specific
-*.dcm
-*.dicom
-*.nii
-*.nii.gz
-*.mha
-*.mhd
-
-# Configuration files with sensitive data
-config.local.py
-settings.local.py
-.env.local
-.env.production
-
-# Reports and documentation builds
-report*.pdf
-*.docx
-*.pptx
-
-# Cache directories
-.cache/
-cache/
-__pycache__/
-.pytest_cache/
-
-# Application specific
-kidney_stone_report*.pdf
-preprocessed_images/
-temp_images/
-test_results/
-inference_results/
-
-# Keep these important files
-!README.md
-!requirements.txt
-!.gitignore
-!models/*/configs/*.yaml
-!data/data.yaml
-!docs/
-!src/
-!scripts/
-!optimize_gpu.sh
-!clear_gpu.py
+!data/test/**/*.jpg
+!data/test/**/*.jpeg
+!data/test/**/*.png
